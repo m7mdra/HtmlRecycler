@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="horizontal">
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="2dp"
+        android:layout_marginEnd="3dp"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_gravity="center"
+        android:text="For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization, WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/blockquote"/>
+</LinearLayout>
