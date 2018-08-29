@@ -85,7 +85,10 @@ simply implement the `Source` interface which will return a `Document` of the pa
         return Jsoup.parse(file, "UTF-8")  
 	    }  
     }
-# TODO list: 
+## attach Click listeners on elements?
+in `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L27) l i defined a [higher-order-function](https://kotlinlang.org/docs/reference/lambdas.html#higher-order-functions) in the constructor method (which dose the same as defining an interface) and on line [#75](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L75) we envoke the method passing our element and the position of the clicked view.
+
+## TODO list: 
 
  - [ ] Define a standard Layout styling
  - [ ] allow `NetworkSource` to run on `UI thread` 
