@@ -1,13 +1,11 @@
+
 # HtmlRecylcer
-Converts a simple html page in to A `RecyclerView` with Native android widgets powered by
-[Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
+Converts a simple html page in to A `RecyclerView` with Native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
 
-> **Note this is under development and  unstable**
+> ***Note this is under development and  unstable***
 
-## demo
-
-
-
+### demo
+[here](https://github.com/m7mdra/HtmlRecylcer/blob/master/app-debug.apk) 
 ## Currently supported html elements:
 
  - [x] Paragraph 
@@ -88,12 +86,18 @@ simply implement the `Source` interface which will return a `Document` of the pa
         return Jsoup.parse(file, "UTF-8")  
 	    }  
     }
-# TODO list: 
+## attach Click listeners on elements?
+in `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L27) l i defined a [higher-order-function](https://kotlinlang.org/docs/reference/lambdas.html#higher-order-functions) in the constructor method (which dose the same as defining an interface) and on line [#75](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L75) we envoke the method passing our element and the position of the clicked view.
 
- - [ ] Define a standard Layout styling
- - [ ] allow `NetworkSource` to run on `UI thread` 
- - [ ] Support Table and Div elements
- - [ ] Test Element Extractors for different data sets
- - [ ] other thing that i come up with
+## TODO list: 
 
-PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**
+ - [ ] Define a standard Layout styling.
+ - [ ] allow `NetworkSource` to run on `UI thread` without crashing. 
+ - [ ] Support the following elements:
+	 - [ ] `Table`
+	 - [ ] `Div`
+	 - [x] `Section`
+ - [ ] Test Element Extractors for different data sets.
+ - [ ] other thing that i come up with...
+
+PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**.
