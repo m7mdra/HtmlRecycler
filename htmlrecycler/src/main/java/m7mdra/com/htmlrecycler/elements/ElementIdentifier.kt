@@ -1,5 +1,6 @@
 package m7mdra.com.htmlrecycler.elements
 
+import android.util.Log
 import m7mdra.com.htmlrecycler.extractor.*
 import m7mdra.com.htmlrecycler.model.AnchorLink
 import m7mdra.com.htmlrecycler.model.DescriptionList
@@ -7,29 +8,29 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 class ElementIdentifier(private val element: Element) {
-    fun identify(): ElementType {
-        return when (element.tagName()) {
-            "h1" -> return ElementType.Heading1
-            "h2" -> return ElementType.Heading2
-            "h3" -> return ElementType.Heading3
-            "h4" -> return ElementType.Heading4
-            "h5" -> return ElementType.Heading5
-            "h6" -> return ElementType.Heading6
-            "blockquote" -> return ElementType.BlockQuote
-            "p" -> return ElementType.Paragraph
-            "iframe" -> return ElementType.IFrame
-            "a" -> return ElementType.AnchorLink
-            "img" -> return ElementType.Image
-            "video" -> return ElementType.Video
-            "audio" -> return ElementType.Audio
-            "ol" -> return ElementType.OrderedList
-            "ul" -> return ElementType.UnorderedList
-            "dl" -> return ElementType.DescriptionList
-//            "div" -> return ElementType.Div
+    fun identify(): ElementType = when (element.tagName()) {
+        "h1" -> ElementType.Heading1
+        "h2" -> ElementType.Heading2
+        "h3" -> ElementType.Heading3
+        "h4" -> ElementType.Heading4
+        "h5" -> ElementType.Heading5
+        "h6" -> ElementType.Heading6
+        "blockquote" -> ElementType.BlockQuote
+        "p" -> ElementType.Paragraph
+        "iframe" -> ElementType.IFrame
+        "a" -> ElementType.AnchorLink
+        "img" -> ElementType.Image
+        "video" -> ElementType.Video
+        "audio" -> ElementType.Audio
+        "ol" -> ElementType.OrderedList
+        "ul" -> ElementType.UnorderedList
+        "dl" -> ElementType.DescriptionList
+        "div" -> ElementType.Div
+        "section" -> ElementType.Section
 //            "table" -> return ElementType.Table
-            else -> ElementType.Unknown
-        }
+        else -> ElementType.Unknown
     }
+
 
     companion object {
         @JvmStatic
@@ -132,11 +133,11 @@ class ElementIdentifier(private val element: Element) {
                         elementList.add(AudioElement(audio))
 
                     }
-
                     ElementType.Unknown -> {
+                        Log.d("MEGA", "FOUND UNKNOWN ELEMENT? GREAT help us implement it" + it.tagName())
                         elementList.add(UnknownElement())
                     }
-
+                    ElementType.Section -> extractData(elementList, it.children())
                 }
             }
         }

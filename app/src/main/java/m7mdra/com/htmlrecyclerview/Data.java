@@ -1,15 +1,15 @@
 package m7mdra.com.htmlrecyclerview;
 
 public class Data {
-    public static String data=
+    public static String data =
             "<h1>Hyundai Atos</h1>\n" +
                     "<p><img src=\"https://raw.githubusercontent.com/m7mdra/starter/aa67e186d49147a09286f176eb213ec52f6842ca/media/Officials_from_the_South_Sudan_Referendum_Commission_SSRC_use_a_car_-_10.jpg\" alt=\"\" width=\"610\" height=\"397\" /></p>\n" +
                     "<p>The <strong>Hyundai   Atos</strong> was a city car produced by the <em>South Korean manufacturer Hyundai</em> since <span>1997</span>. It was also marketed under the <strong>Atoz</strong>, Amica and Santro Xing model names. It was facelifted in 1999, from when it marketed as the Atos Prime, and in 2003. It has been available only with a five-door hatchback body style. It was replaced in most markets by the Hyundai i10 in 2007, but production continued in India till late 2014</p>\n" +
                     "<p><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2006_Hyundai_Amica_CDX_1.1_Front.jpg/1024px-2006_Hyundai_Amica_CDX_1.1_Front.jpg\" alt=\"\" width=\"615\" height=\"409\" /></p>\n" +
                     "<h1>Overview</h1>\n" +
                     "<p>The first Atos was introduced in 1997. It is fitted with a 999cc engine and has a top speed of 88 mph (142 km/h). It was succeeded by a facelift version by 2000 and in 2003 another one. It was discontinued in Europe in 2007, in favour of the Indian assembled i10 and in other markets in 2011." +
-                    "<a href=http://www.google.com >Contact us</a> on our website"+
-                    "or call us +249921210081"+
+                    "<a href=http://www.google.com >Contact us</a> on our website" +
+                    "or call us +249921210081" +
                     "</p>\n" +
                     "<h1>Other names</h1>\n" +
                     "<p>The Atos Prime is marketed as the:</p>\n" +
@@ -54,11 +54,66 @@ public class Data {
                     "<li>Emissions: 151 g CO2/km, other emissions below Euro III standard.</li>\n" +
                     "</ul>\n" +
                     "<h1>IFrame</h1>\n" +
-                    "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BBGEG21CGo0\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"+
+                    "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/BBGEG21CGo0\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>" +
                     "<h1>Video</h1>\n" +
                     "<p><video controls=\"controls\" width=\"300\" height=\"150\">\n" +
                     "<source src=\"https://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_20mb.mp4\" type=\"video/mp4\" /></video></p>\n" +
                     "<h1>Audio</h1>\n" +
                     "<p><audio src=\"https://freemusicarchive.org/file/music/Creative_Commons/Dead_Combo/CC_Affiliates_Mixtape_1/Dead_Combo_-_01_-_Povo_Que_Cas_Descalo.mp3\" controls=\"controls\"></audio></p>";
+    public static String data2 = "<p style=\"text-align: center;\"><img class=\"fr-fir fr-dii\" width=\"200\" src=\"https://cdn0.froala.com/assets/editor/pages/B/editor-photo-1d537ae135c71b11f19d4b9fb0ddbe42.jpg\" alt=\"Editor photo\"></p>\n" +
+            "\n" +
+            "<p>Froala Editor is a lightweight WYSIWYG HTML Editor written in Javascript that enables rich text editing capabilities for your applications.</p>\n" +
+            "\n" +
+            "<p>Its complete <a href=\"/wysiwyg-editor/docs\" title=\"Documentation\">documentation</a>, specially designed <a href=\"#frameworks\" title=\"Frameworks\">framework plugins</a> and <a href=\"/wysiwyg-editor/examples\" title=\"Examples\">tons of examples</a> make it easy to integrate. We&#39;re continuously working to add in new features and take the Javascript web WYSIWYG editing capabilities beyond its current limits.</p>\n" +
+
+
+
+            "<div class=\"reveal\">\n" +
+            "<div class=\"slides\">\n" +
+            "<section>\n" +
+            "<h2>Smart contract development & Solidity</h2>\n" +
+            "</section>\n" +
+            "\n" +
+            "<section>\n" +
+            "<h2>Solidity</h2>\n" +
+            "<p>Solidity is a programming language for writing smart contracts which run on Ethereum Virtual Machine on Blockchain. It is a contract-oriented, high-level language.</p>\n" +
+            "<img src=\"../img/ethereum-logo.svg\" width=\"380\">\n" +
+            "</section>\n" +
+            "\n" +
+            "<section>\n" +
+            "<h2>Prerequisites</h2>\n" +
+            "<h5>(Before learning Solidity)</h5>\n" +
+            "<ul>\n" +
+            "<li>JavaScript (variable assignments, loops, arrays, functions)</li>\n" +
+            "<li>Object-oriented programming concepts (classes, methods, static and instance variables)</li>\n" +
+            "<li>Command line usage</li>\n" +
+            "</ul>\n" +
+            "</section>\n" +
+            "\n" +
+            "<section>\n" +
+            "<h2>Part 1</h2>\n" +
+            "<ul>\n" +
+            "<li>Environment setup</li>\n" +
+            "<li>Data types</li>\n" +
+            "<li>Operators</li>\n" +
+            "<li>Functions</li>\n" +
+            "<li>Visibility</li>\n" +
+            "<li>ERC20 token standard interface</li>\n" +
+            "<li>Dummy Token project</li>\n" +
+            "</ul>\n" +
+            "</section>\n" +
+            "\n" +
+            "<section>\n" +
+            "<h2>Part 2</h2>\n" +
+            "<ul>\n" +
+            "<li>Events and logging (finish Dummy Token project)</li>\n" +
+            "<li>Inheritance and polymorphism</li>\n" +
+            "<li>Exceptions</li>\n" +
+            "<li>Security concerns</li>\n" +
+            "<li>Deployment on Ethereum blockchain</li>\n" +
+            "</ul>\n" +
+            "</section>\n" +
+            "</div>\n" +
+            "</div>\n";
 
 }
