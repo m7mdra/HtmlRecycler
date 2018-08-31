@@ -90,10 +90,10 @@ in `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRec
 
 ## TODO list: 
 
- - [ ] Define a standard Layout styling
- - [ ] allow `NetworkSource` to run on `UI thread` 
- - [ ] Support Table and Div elements
- - [ ] Test Element Extractors for different data sets
- - [ ] other thing that i come up with
+ - [ ] Define a standard Layout styling.
+ - [ ] allow `NetworkSource` to run on `UI thread` without crashing. 
+ - [ ] Support `Table`,`Div`,`Section` elements.
+ - [ ] Test Element Extractors for different data sets.
+ - [ ] other thing that i come up with...
 
 PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**
