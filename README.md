@@ -1,5 +1,6 @@
 
 
+
 # HtmlRecycler
 Converts a simple html page in to A `RecyclerView` with Native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
 
@@ -91,7 +92,41 @@ simply implement the `Source` interface which will return a `Document` of the pa
     }
 ## attach Click listeners on elements?
 in `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L27) l i defined a [higher-order-function](https://kotlinlang.org/docs/reference/lambdas.html#higher-order-functions) in the constructor method (which dose the same as defining an interface) and on line [#75](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L75) we envoke the method passing our element and the position of the clicked view.
+## Add to your project?
+Add it in your root build.gradle at the end of repositories:
+**Gradle**
+```css
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
 
+**Step 2.**  Add the dependency
+
+```css
+	dependencies {
+	        implementation 'com.github.m7mdra:HtmlRecycler:0.1'
+	}
+```
+**Maven**
+```markup
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+```markup
+	<dependency>
+	    <groupId>com.github.m7mdra</groupId>
+	    <artifactId>HtmlRecycler</artifactId>
+	    <version>0.1</version>
+	</dependency>
+```
 ## TODO list: 
 
  - [ ] Define a standard Layout styling.
