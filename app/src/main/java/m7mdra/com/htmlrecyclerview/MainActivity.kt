@@ -2,52 +2,50 @@ package m7mdra.com.htmlrecyclerview
 
 import android.annotation.SuppressLint
 import android.app.FragmentTransaction
-import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v4.view.accessibility.AccessibilityRecordCompat.setSource
+import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import m7mdra.com.htmlrecycler.*
 import m7mdra.com.htmlrecycler.adapter.DefaultElementsAdapter
 import m7mdra.com.htmlrecycler.elements.ImageElement
 import m7mdra.com.htmlrecycler.source.NetworkSource
-import m7mdra.com.htmlrecycler.source.Source
-import m7mdra.com.htmlrecycler.source.StringSource
 import org.jsoup.nodes.Document
+
 
 class MainActivity : AppCompatActivity() {
 
-    @SuppressLint("StaticFieldLeak")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        object : AsyncTask<Unit, Unit, Document>() {
-            override fun doInBackground(vararg params: Unit?): Document {
-                return StringSource(Data.data2).get()
+        val networkSource = NetworkSource("https://gist.githubusercontent.com/m7mdra/f22c62bc6941e08064b4fbceb4832a90/raw/ea8574d986635cf214541f1f5702ef37cc731aaf/article.html")
 
-            }
+        HtmlRecycler.Builder(this@MainActivity)
+                .setSource(networkSource)
+                .setAdapter(DefaultElementsAdapter(this@MainActivity) { element, i, view ->
 
-            override fun onPostExecute(result: Document) {
-                super.onPostExecute(result)
-                HtmlRecycler.Builder(this@MainActivity)
-                        .setSource(object:Source{
-                            override fun get(): Document {
-                                return result
-                            }
-                        })
-                        .setAdapter(DefaultElementsAdapter(this@MainActivity) { element, i, view ->
-                            if (element is ImageElement)
-                                supportFragmentManager.beginTransaction().apply {
-                                    replace(R.id.fragment_layout, ImageFragment.newInstance(element.ImageUrl))
-                                    setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    commit()
-                                    addToBackStack("")
-                                }
-                        }).setRecyclerView(recyclerView)
-                        .build()
-            }
+                    Toast.makeText(this, "you clicked ${element::class.java.simpleName} element", Toast.LENGTH_SHORT).show()
+                    if (element is ImageElement)
+                        supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.fragment_layout, ImageFragment.newInstance(element.ImageUrl))
+                            setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            commit()
+                            addToBackStack("")
+                        }
+                }).setRecyclerView(recyclerView)
+                .setLoadingCallback(object : HtmlRecycler.LoadCallback {
+                    override fun onLoadingStart() {
+                        progressBar.visibility = View.VISIBLE
+                    }
 
-        }.execute().get()
+                    override fun onLoaded(document: Document?) {
+                        progressBar.visibility = View.GONE
+
+                    }
+                })
+                .build()
 
     }
 

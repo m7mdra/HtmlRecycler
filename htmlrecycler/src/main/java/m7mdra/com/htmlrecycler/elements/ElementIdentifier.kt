@@ -27,7 +27,6 @@ class ElementIdentifier(private val element: Element) {
         "dl" -> ElementType.DescriptionList
         "div" -> ElementType.Div
         "section" -> ElementType.Section
-//            "table" -> return ElementType.Table
         else -> ElementType.Unknown
     }
 

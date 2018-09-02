@@ -119,7 +119,6 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
                 Picasso.get().load((element as ImageElement).ImageUrl)
                         .placeholder(ColorDrawable(Color.parseColor("#EFF0EE")))
                         .error(ColorDrawable(Color.parseColor("#EFF0EE")))
-                        .fit()
                         .into(holder.image)
             }
             is BlockQuoteViewHolder -> {

@@ -77,7 +77,7 @@ public class Data {
             "<section>\n" +
             "<h2>Solidity</h2>\n" +
             "<p>Solidity is a programming language for writing smart contracts which run on Ethereum Virtual Machine on Blockchain. It is a contract-oriented, high-level language.</p>\n" +
-            "<img src=\"../img/ethereum-logo.svg\" width=\"380\">\n" +
+            "<img src=\"https://res.cloudinary.com/teepublic/image/private/s--68-qLqlp--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1509381144/production/designs/2011603_1.jpg\" width=\"380\">\n" +
             "</section>\n" +
             "\n" +
             "<section>\n" +
@@ -115,5 +115,6 @@ public class Data {
             "</section>\n" +
             "</div>\n" +
             "</div>\n";
+
 
 }

@@ -11,8 +11,6 @@ import java.util.logging.Handler
 @WorkerThread
 class NetworkSource(private val url: String) : Source {
     override fun get(): Document {
-        if (Looper.getMainLooper().thread== Thread.currentThread())
-            throw Exception("'NetworkSource' should be called of Main Thread (UI Thread)")
         return Jsoup.connect(url).get()
     }
 }
