@@ -4,13 +4,11 @@
 Converts a simple html page in to A `RecyclerView` with Native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
 
 > ***Note this is under development and  unstable***
-<iframe src="https://appetize.io/embed/h0uchdq1y60tgzbuw7hajfqb00?device=nexus5&scale=75&orientation=portrait&osVersion=7.1"
-height="100%" width="100%"
-></iframe>
 
 
 ### demo
-[here](https://github.com/m7mdra/HtmlRecylcer/blob/master/app-debug.apk) 
+ -[APK](https://github.com/m7mdra/HtmlRecylcer/blob/master/app-debug.apk) 
+ -[Web Emulator](https://appetize.io/embed/h0uchdq1y60tgzbuw7hajfqb00?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 ## Currently supported html elements:
 
  - [x] Paragraph 
