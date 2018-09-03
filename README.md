@@ -119,7 +119,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```css
 	dependencies {
-	        implementation 'com.github.m7mdra:HtmlRecycler:0.1'
+	        implementation 'com.github.m7mdra:HtmlRecycler:0.1.1'
 	}
 ```
 **Maven**
@@ -135,7 +135,7 @@ Add it in your root build.gradle at the end of repositories:
 	<dependency>
 	    <groupId>com.github.m7mdra</groupId>
 	    <artifactId>HtmlRecycler</artifactId>
-	    <version>0.1</version>
+	    <version>0.1.1</version>
 	</dependency>
 ```
 ## TODO list: 
