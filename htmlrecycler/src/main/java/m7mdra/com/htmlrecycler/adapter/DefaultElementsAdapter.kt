@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import m7mdra.com.htmlrecycler.*
 import m7mdra.com.htmlrecycler.elements.*
 import m7mdra.com.htmlrecycler.viewholder.*
@@ -103,8 +104,14 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
             }
             is ParagraphViewHolder -> {
                 val paragraphElement = element as ParagraphElement
-                val textView = holder.paragraphText
-                textView.text = htmlfiy(paragraphElement.text)
+
+                holder.recyclerView.apply {
+                    val flowLayoutManager = FlowLayoutManager()
+                    flowLayoutManager.isAutoMeasureEnabled = true
+                    layoutManager = flowLayoutManager
+                    adapter = ParagraphAdapter(paragraphElement.paragraph)
+                    setHasFixedSize(true)
+                }
 
             }
             is AnchorLinkViewHolder -> {
