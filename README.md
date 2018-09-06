@@ -148,5 +148,10 @@ Add it in your root build.gradle at the end of repositories:
 	 - [x] `Section`
  - [ ] Test Element Extractors for different data sets.
  - [ ] other thing that i come up with...
+## Dependencies:
 
+ - [BetterLinkMovementMethod](https://github.com/saket/Better-Link-Movement-Method)
+ - [Jsoup](https://jsoup.org/)
+ - [Picasso](https://github.com/square/picasso)
+ 
 PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**.
