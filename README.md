@@ -28,18 +28,28 @@ Converts a simple html page in to A `RecyclerView` with Native android widgets p
 
 ## Implement in your project ? 
 
-    HtmlRecycler.Builder(this)  
-        .setSource(StringSource(Data.data))  
-        .setAdapter(DefaultElementsAdapter(this) { element, i, view->  
-	  if (element is ImageElement)  
-                supportFragmentManager.beginTransaction().apply {  
-	  replace(R.id.fragment_layout,ImageFragment.newInstance(element.ImageUrl))  
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)  
-                    commit()  
-                    addToBackStack("")  
-                }  
-	 }).setRecyclerView(recyclerView)  
+```
+val networkSource = NetworkSource("https://gist.githubusercontent.com/m7mdra/f22c62bc6941e08064b4fbceb4832a90/raw/ea8574d986635cf214541f1f5702ef37cc731aaf/article.html")  
+  
+HtmlRecycler.Builder(this@MainActivity)  
+        .setSource(networkSource)  
+        .setAdapter(DefaultElementsAdapter(this@MainActivity)
+         { element, i, view ->  
+          
+        }}).setRecyclerView(recyclerView)  
+        .setLoadingCallback(object : HtmlRecycler.LoadCallback {  
+            override fun onLoadingStart() {  
+                progressBar.visibility = View.VISIBLE  
+  }  
+  
+            override fun onLoaded(document: Document?) {  
+                progressBar.visibility = View.GONE
+  
+  }  
+        })  
         .build()
+```
+
 the above code uses the existing implementation of `DefaultElementsAdapter` which `extends` `ElementsAdapter` class which inherently is a `RecylcerView Adpater`  
 the `DefaultElementsAdapter` uses a layout resources files defined by me but they not styled probably and are very buggy(especially the video, audio and iframe ones)
 
@@ -109,7 +119,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```css
 	dependencies {
-	        implementation 'com.github.m7mdra:HtmlRecycler:0.1'
+	        implementation 'com.github.m7mdra:HtmlRecycler:0.1.1'
 	}
 ```
 **Maven**
@@ -125,23 +135,22 @@ Add it in your root build.gradle at the end of repositories:
 	<dependency>
 	    <groupId>com.github.m7mdra</groupId>
 	    <artifactId>HtmlRecycler</artifactId>
-	    <version>0.1</version>
+	    <version>0.1.1</version>
 	</dependency>
 ```
 ## TODO list: 
 
  - [ ] Define a standard Layout styling.
- - [ ] allow `NetworkSource` to run on `UI thread` without crashing. 
+ - [x] allow `NetworkSource` to run on `UI thread` without crashing. 
  - [ ] Support the following elements:
 	 - [ ] `Table`
-	 - [ ] `Div`
+	 - [x] `Div`
 	 - [x] `Section`
  - [ ] Test Element Extractors for different data sets.
  - [x] add more control over paragraph element.
  - [ ] other thing that i come up with...
-
+ 
 ## Dependencies:
-
  - [FlowLayoutManager](https://github.com/xiaofeng-han/AndroidLibs/tree/master/flowlayoutmanager)
  - [Jsoup](https://jsoup.org/)
  - [Picasso](https://github.com/square/picasso)
