@@ -23,7 +23,6 @@ import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import m7mdra.com.htmlrecycler.*
 import m7mdra.com.htmlrecycler.elements.*
 import m7mdra.com.htmlrecycler.viewholder.*
-import me.saket.bettermovementmethod.BetterLinkMovementMethod
 
 class DefaultElementsAdapter(private val context: Context, private val onClick: (Element, Int, View) -> Unit) : ElementsAdapter() {
 
