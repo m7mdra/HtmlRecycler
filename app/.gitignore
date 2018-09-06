@@ -2,6 +2,7 @@
 /build/kotlin
 /build/intermediates
 /build/generated
-/build/outputs/logs
+/build/outputs/logs/
+
 
 
