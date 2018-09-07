@@ -6,6 +6,8 @@ import m7mdra.com.htmlrecycler.extractor.*
 import m7mdra.com.htmlrecycler.model.AnchorLink
 import m7mdra.com.htmlrecycler.model.DescriptionList
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Element
+import org.jsoup.nodes.TextNode
 import org.jsoup.select.Elements
 
 import org.junit.Test
@@ -24,9 +26,7 @@ class ExampleUnitTest {
         val elements = parse.body().children()
         val elementList = mutableListOf<m7mdra.com.htmlrecycler.elements.Element>()
         extractData(elementList, elements)
-        elementList.forEach {
-            println(it)
-        }
+
     }
 
     private fun extractData(elementList: MutableList<m7mdra.com.htmlrecycler.elements.Element>, elements: Elements) {
@@ -100,18 +100,26 @@ class ExampleUnitTest {
                             it.getElementsByTag("video").isNotEmpty())
                         extractData(elementList, children)
                     else {
-                        val text = it.toString()
-                        elementList.add(ParagraphElement(
-                                text.replace("<p>", "")
-                                        .replace("</p>", "")
-                                        .replace("</strong>", "</b>")
-                                        .replace("<strong>", "<b>")
-                                        .replace("<em>", "<i>")
-                                        .replace("</em>", "</i>")
-                                        .replace("<span>", "<u>")
-                                        .replace("</span>", "</u>")
-                                        .trim()
-                                        .replace("\\s{2,}", " ")))
+                        val list = mutableListOf<Paragraph>()
+                        val dataNodes = it.childNodes()
+                        dataNodes.forEach { node ->
+                            if (node is TextNode)
+                                list.add(Body(node.text()))
+                            else if (node is Element)
+                                when {
+                                    node.tagName() == "a" ->
+                                        list.add(AnchorLinkInParagraph(node.text(), node.absUrl("href")))
+                                    node.tagName() == "b" || node.tagName() == "strong" ->
+                                        list.add(Bold(node.text()))
+                                    node.tagName() == "em" || node.tagName() == "i" ->
+                                        list.add(Emphasizes(node.text()))
+                                    node.tagName() == "u" || node.tagName() == "span" &&
+                                            node.attributes()["style"].contains("underline") ->
+                                        list.add(UnderLine(node.text()))
+                                    else -> list.add(Unknown())
+                                }
+                        }
+                        assertEquals(dataNodes.size, list.size)
 
                     }
                 }
@@ -130,6 +138,9 @@ class ExampleUnitTest {
                     elementList.add(UnknownElement())
                 }
 
+                else -> {
+                    elementList.add(UnknownElement())
+                }
             }
         }
     }
@@ -137,10 +148,11 @@ class ExampleUnitTest {
     object Data {
         val data = "<h1 id=\"firstHeading\" class=\"firstHeading\" lang=\"en\">Hyundai Atos</h1>\n" +
                 "<p><img src=\"https://raw.githubusercontent.com/m7mdra/starter/aa67e186d49147a09286f176eb213ec52f6842ca/media/Officials_from_the_South_Sudan_Referendum_Commission_SSRC_use_a_car_-_10.jpg\" alt=\"\" width=\"610\" height=\"397\" /></p>\n" +
-                "<p>The <strong>Hyundai   Atos</strong> was a city car produced by the <em>South Korean manufacturer Hyundai</em> since <span>1997</span>. It was also marketed under the <strong>Atoz</strong>, Amica and Santro Xing model names. It was facelifted in 1999, from when it marketed as the Atos Prime, and in 2003. It has been available only with a five-door hatchback body style. It was replaced in most markets by the Hyundai i10 in 2007, but production continued in India till late 2014</p>\n" +
+                "<p>The <strong>Hyundai   Atos</strong> was a city car produced by the <em>South Korean manufacturer Hyundai</em> since <span  style=\"text-decoration: underline;\">1997</span>. It was also marketed under the <strong>Atoz</strong>, Amica and Santro Xing model names. It was facelifted in 1999, from when it marketed as the Atos Prime, and in 2003." +
+                "<a href=\"http://example.com\">anchored text</a> It has been available only with a five-door hatchback body style. It was replaced in most markets by the Hyundai i10 in 2007, but production continued in India till late 2014</p>\n" +
                 "<p><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2006_Hyundai_Amica_CDX_1.1_Front.jpg/1024px-2006_Hyundai_Amica_CDX_1.1_Front.jpg\" alt=\"\" width=\"615\" height=\"409\" /></p>\n" +
                 "<h1>Overview</h1>\n" +
-                "<p>The first Atos was introduced in 1997. It is fitted with a 999cc engine and has a top speed of 88 mph (142 km/h). It was succeeded by a facelift version by 2000 and in 2003 another one. It was discontinued in Europe in 2007, in favour of the Indian assembled i10 and in other markets in 2011.</p>\n" +
+                "<p>The first <strong>Atos</strong> was introduced in 1997. It is fitted with a 999cc engine and has a top speed of 88 mph (142 km/h). It was succeeded by a face-lift version by 2000 and in 2003 another one. It was discontinued in Europe in 2007, in favour of the Indian assembled i10 and in other markets in 2011.  </p>\n" +
                 "<h1>Other names</h1>\n" +
                 "<p>The Atos Prime is marketed as the:</p>\n" +
                 "<ul>\n" +
@@ -239,3 +251,12 @@ class ExampleUnitTest {
         }
     }*/
 }
+
+sealed class Paragraph
+
+data class Body(val bodyText: String) : Paragraph()
+data class AnchorLinkInParagraph(val text: String, val url: String) : Paragraph()
+data class UnderLine(val text: String) : Paragraph()
+data class Bold(val text: String) : Paragraph()
+data class Emphasizes(val text: String) : Paragraph()
+class Unknown : Paragraph()

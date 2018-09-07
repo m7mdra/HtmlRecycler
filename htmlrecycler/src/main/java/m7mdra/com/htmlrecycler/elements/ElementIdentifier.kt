@@ -1,10 +1,14 @@
 package m7mdra.com.htmlrecycler.elements
 
 import android.util.Log
+import junit.framework.Assert
 import m7mdra.com.htmlrecycler.extractor.*
+import m7mdra.com.htmlrecycler.log
 import m7mdra.com.htmlrecycler.model.AnchorLink
 import m7mdra.com.htmlrecycler.model.DescriptionList
+import m7mdra.com.htmlrecycler.println
 import org.jsoup.nodes.Element
+import org.jsoup.nodes.TextNode
 import org.jsoup.select.Elements
 
 class ElementIdentifier(private val element: Element) {
@@ -33,7 +37,7 @@ class ElementIdentifier(private val element: Element) {
 
     companion object {
         @JvmStatic
-        fun extractData(elementList: MutableList<m7mdra.com.htmlrecycler.elements.Element>, elements: Elements) {
+         fun extractData(elementList: MutableList<m7mdra.com.htmlrecycler.elements.Element>, elements: Elements) {
             elements.forEach {
                 when (ElementIdentifier(it).identify()) {
                     ElementType.Image -> {
@@ -104,19 +108,28 @@ class ElementIdentifier(private val element: Element) {
                                 it.getElementsByTag("video").isNotEmpty())
                             extractData(elementList, children)
                         else {
-                            val text = it.toString()
-                            elementList.add(ParagraphElement(
-                                    text.replace("<p>", "")
-                                            .replace("</p>", "")
-                                            .replace("</strong>", "</b>")
-                                            .replace("<strong>", "<b>")
-                                            .replace("<em>", "<i>")
-                                            .replace("</em>", "</i>")
-                                            .replace("<span>", "<u>")
-                                            .replace("</span>", "</u>")
-                                            .trim()
-                                            .replace("\\s{2,}", " ")))
+                            val list = mutableListOf<Paragraph>()
+                            val dataNodes = it.childNodes()
+                            dataNodes.forEach { node ->
+                                if (node is TextNode)
+                                    list.add(Body(node.text()))
+                                else if (node is Element)
+                                    when {
+                                        node.tagName() == "a" ->
+                                            list.add(AnchorLinkInParagraph(node.text(), node.absUrl("href")))
+                                        node.tagName() == "b" || node.tagName() == "strong" ->
+                                            list.add(Bold(node.text()))
+                                        node.tagName() == "em" || node.tagName() == "i" ->
+                                            list.add(Emphasizes(node.text()))
+                                        node.tagName() == "u" || node.tagName() == "span" &&
+                                                node.attributes()["style"].contains("underline") ->
+                                            list.add(UnderLine(node.text()))
+                                        else -> list.add(Unknown())
+                                    }
 
+                            }
+                            list.map { it::class.java.simpleName }.log()
+                            elementList.add(ParagraphElement(list))
                         }
                     }
                     ElementType.BlockQuote -> {
@@ -124,21 +137,22 @@ class ElementIdentifier(private val element: Element) {
                     }
 
                     ElementType.IFrame -> {
-                        val frameUrl = IFrameExtractor(it).extract()
-                        elementList.add(IFrameElement(frameUrl))
+
                     }
                     ElementType.Audio -> {
                         val audio = AudioExtractor(it).extract()
                         elementList.add(AudioElement(audio))
-
                     }
                     ElementType.Unknown -> {
-                        Log.d("MEGA", "FOUND UNKNOWN ELEMENT? GREAT help us implement it" + it.tagName())
                         elementList.add(UnknownElement())
                     }
                     ElementType.Section -> extractData(elementList, it.children())
+                    else -> {
+                        elementList.add(UnknownElement())
+                    }
                 }
             }
+            elementList.map { it::class.java.simpleName }.log()
         }
     }
 }

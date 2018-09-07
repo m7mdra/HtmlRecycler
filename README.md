@@ -9,7 +9,7 @@ Converts a simple html page in to A `RecyclerView` with Native android widgets p
 
 
 ### demo
- -[APK](https://github.com/m7mdra/HtmlRecylcer/blob/master/app-debug.apk) 
+ -[APK](https://github.com/m7mdra/HtmlRecycler/raw/controlable-paragraph/app/build/outputs/apk/debug/app-debug.apk) 
  -[Web Emulator](https://appetize.io/embed/h0uchdq1y60tgzbuw7hajfqb00?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
 ## Currently supported html elements:
 
@@ -147,11 +147,12 @@ Add it in your root build.gradle at the end of repositories:
 	 - [x] `Div`
 	 - [x] `Section`
  - [ ] Test Element Extractors for different data sets.
+ - [x] add more control over paragraph element.
  - [ ] other thing that i come up with...
+ 
 ## Dependencies:
-
- - [BetterLinkMovementMethod](https://github.com/saket/Better-Link-Movement-Method)
+ - [FlowLayoutManager](https://github.com/xiaofeng-han/AndroidLibs/tree/master/flowlayoutmanager)
  - [Jsoup](https://jsoup.org/)
  - [Picasso](https://github.com/square/picasso)
- 
+
 PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**.
