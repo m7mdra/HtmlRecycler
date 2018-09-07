@@ -10,7 +10,7 @@ Converts a simple html page in to A `RecyclerView` with Native android widgets p
 
 ### demo
  -[APK](https://cdn.rawgit.com/m7mdra/HtmlRecycler/d278854a/app/build/outputs/apk/debug/app-debug.apk) 
- -[Web Emulator](https://appetize.io/embed/h0uchdq1y60tgzbuw7hajfqb00?device=nexus5&scale=75&orientation=portrait&osVersion=7.1)
+ 
 ## Currently supported html elements:
 
  - [x] Paragraph 
@@ -24,7 +24,7 @@ Converts a simple html page in to A `RecyclerView` with Native android widgets p
  - [x]  Anchor Link
  - [x]  IFrame
  - [ ] Table
- - [ ] DIV 
+ - [x] DIV 
 
 ## Implement in your project ? 
 
