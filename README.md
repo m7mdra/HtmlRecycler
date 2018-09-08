@@ -10,6 +10,7 @@ Converts a simple html page in to A `RecyclerView` with Native android widgets p
 
 ### demo
  -[APK](https://cdn.rawgit.com/m7mdra/HtmlRecycler/d278854a/app/build/outputs/apk/debug/app-debug.apk) 
+ - Or simply `git clone` the repository and build the `app` moudle. 
  
 ## Currently supported html elements:
 
