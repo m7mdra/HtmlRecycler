@@ -4,7 +4,7 @@
 
 
 # HtmlRecycler
-Converts a simple html page in to A `RecyclerView` with Native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
+Converts a simple html page into A `RecyclerView` of Native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/)
 
 > ***Note this is under development and  unstable***
 
