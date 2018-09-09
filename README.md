@@ -22,7 +22,9 @@ allprojects {
 ```
 
 ## Demo
-| ![demo1](https://raw.githubusercontent.com/m7mdra/HtmlRecycler/master/media/demo1.gif) | ![demo2](https://raw.githubusercontent.com/m7mdra/HtmlRecycler/master/media/demo2.gif) |
+|  |  |
+|--|--|
+| ![enter image description here](https://raw.githubusercontent.com/m7mdra/HtmlRecycler/master/media/demo1.gif) | ![enter image description here](https://raw.githubusercontent.com/m7mdra/HtmlRecycler/master/media/demo2.gif) |
 
  - [APK](https://cdn.rawgit.com/m7mdra/HtmlRecycler/d278854a/app/build/outputs/apk/debug/app-debug.apk) 
  - Or simply `git clone` the repository and build the `app` module. 
