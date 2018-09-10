@@ -8,14 +8,14 @@ Converts a simple html page into A `RecyclerView` of native android widgets powe
 >  This library was design and developed by ME and we use this in our application which depends on a Content Management system and was never intended to replace browsers or act as one. this library simply gave us more control over html page than `WebView`
 
 ## Add it to your project
-```
+```groovy
 dependencies {
     implementation 'com.github.m7mdra:HtmlRecycler:0.1.1'
 }
 ```
 
 This project is distributed using jitpack. Make sure you add it as a maven repository to your `build.gradle`
-```
+```groovy
 allprojects {
     repositories {
         maven { 
@@ -50,7 +50,7 @@ allprojects {
  - [x] DIV 
 
 ## Implementation
-```
+```Kotlin
 val networkSource = NetworkSource("https://gist.githubusercontent.com/m7mdra/f22c62bc6941e08064b4fbceb4832a90/raw/ea8574d986635cf214541f1f5702ef37cc731aaf/article.html")  
   
 HtmlRecycler.Builder(this@MainActivity)  
@@ -72,7 +72,7 @@ HtmlRecycler.Builder(this@MainActivity)
 The above code uses the existing implementation of `DefaultElementsAdapter` which `extends` `ElementsAdapter` class which inherently is a `RecylcerView Adpater` the `DefaultElementsAdapter` uses a layout resources files defined by me but they not styled probably and are very buggy (especially the video, audio and iframe ones).
 
 Want to create your own adapter? just simply extend `ElementsAdapter` and override methods:
-```
+```Kotlin
 class BetterImplementationThanTheAuthorsAdapter : ElementsAdapter() {    
     override fun onCreateElement(parent: ViewGroup, elementType: ElementType): RecyclerView.ViewHolder {  
         when (elementType) {  
@@ -95,7 +95,7 @@ class BetterImplementationThanTheAuthorsAdapter : ElementsAdapter() {
 ```
 
 Then replace the default adapter with your adapter:
-```
+```Kotlin
 HtmlRecycler.Builder(this)  
     .setSource(StringSource(Data.data))  
     .setAdapter(BetterImplementationThanTheAuthorsAdapter()) // this is a custom adapter  
@@ -113,7 +113,7 @@ Data can come from different sources, the library support the following:
 
 ### Write your own source
 Simply implement the `Source` interface which will return a `Document` of the parsed `Source`:
-```
+```Kotlin
 class FileSource(val file: File) : Source {  
     override fun get(): Document {  
         return Jsoup.parse(file, "UTF-8")  
