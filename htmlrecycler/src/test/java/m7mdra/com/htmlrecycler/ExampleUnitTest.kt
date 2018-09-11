@@ -135,11 +135,11 @@ class ExampleUnitTest {
                     elementList.add(AudioElement(audio))
                 }
                 ElementType.Unknown -> {
-                    elementList.add(UnknownElement())
+                    elementList.add(UnknownElement(it.toString()))
                 }
 
                 else -> {
-                    elementList.add(UnknownElement())
+                    elementList.add(UnknownElement(it.toString()))
                 }
             }
         }

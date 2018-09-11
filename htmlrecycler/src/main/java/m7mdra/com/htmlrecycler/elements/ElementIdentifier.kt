@@ -108,28 +108,7 @@ class ElementIdentifier(private val element: Element) {
                                 it.getElementsByTag("video").isNotEmpty())
                             extractData(elementList, children)
                         else {
-                            val list = mutableListOf<Paragraph>()
-                            val dataNodes = it.childNodes()
-                            dataNodes.forEach { node ->
-                                if (node is TextNode)
-                                    list.add(Body(node.text()))
-                                else if (node is Element)
-                                    when {
-                                        node.tagName() == "a" ->
-                                            list.add(AnchorLinkInParagraph(node.text(), node.absUrl("href")))
-                                        node.tagName() == "b" || node.tagName() == "strong" ->
-                                            list.add(Bold(node.text()))
-                                        node.tagName() == "em" || node.tagName() == "i" ->
-                                            list.add(Emphasizes(node.text()))
-                                        node.tagName() == "u" || node.tagName() == "span" &&
-                                                node.attributes()["style"].contains("underline") ->
-                                            list.add(UnderLine(node.text()))
-                                        else -> list.add(Unknown())
-                                    }
-
-                            }
-                            list.map { it::class.java.simpleName }.log()
-                            elementList.add(ParagraphElement(list))
+                            elementList.add(ParagraphElement(it.toString()))
                         }
                     }
                     ElementType.BlockQuote -> {
@@ -144,11 +123,11 @@ class ElementIdentifier(private val element: Element) {
                         elementList.add(AudioElement(audio))
                     }
                     ElementType.Unknown -> {
-                        elementList.add(UnknownElement())
+                        elementList.add(UnknownElement(it.toString()))
                     }
                     ElementType.Section -> extractData(elementList, it.children())
                     else -> {
-                        elementList.add(UnknownElement())
+                        elementList.add(UnknownElement(it.toString()))
                     }
                 }
             }

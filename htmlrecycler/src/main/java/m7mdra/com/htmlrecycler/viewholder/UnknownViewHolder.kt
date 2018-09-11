@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import m7mdra.com.htmlrecycler.R
 
-class ParagraphViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-    val paragraphText = view.findViewById<TextView>(R.id.paragraph_text)
+class UnknownViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
+    val unknownTextView = view.findViewById<TextView>(R.id.unknown_text)
+
 }

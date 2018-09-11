@@ -6,20 +6,11 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.Spannable
-import android.text.method.LinkMovementMethod
-import android.text.method.MovementMethod
-import android.text.method.ScrollingMovementMethod
-import android.text.util.Linkify
-import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import m7mdra.com.htmlrecycler.*
 import m7mdra.com.htmlrecycler.elements.*
 import m7mdra.com.htmlrecycler.viewholder.*
@@ -55,7 +46,7 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
             ElementType.BlockQuote ->
                 BlockQuoteViewHolder(LayoutInflater.from(context).inflate(R.layout.row_blockquote, parent, false))
             ElementType.Unknown ->
-                EmptyViewHolder(LayoutInflater.from(context).inflate(R.layout.row_empty, parent, false))
+                UnknownViewHolder(LayoutInflater.from(context).inflate(R.layout.row_unknown, parent, false))
             ElementType.AnchorLink ->
                 AnchorLinkViewHolder(LayoutInflater.from(context).inflate(R.layout.row_anchor_link, parent, false))
             ElementType.OrderedList ->
@@ -65,7 +56,7 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
             ElementType.DescriptionList ->
                 DescriptionListViewHolder(LayoutInflater.from(context).inflate(R.layout.row_list, parent, false))
             else ->
-                EmptyViewHolder(LayoutInflater.from(context).inflate(R.layout.row_empty, parent, false))
+                UnknownViewHolder(LayoutInflater.from(context).inflate(R.layout.row_unknown, parent, false))
         }
     }
 
@@ -103,14 +94,7 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
             }
             is ParagraphViewHolder -> {
                 val paragraphElement = element as ParagraphElement
-
-                holder.recyclerView.apply {
-                    val flowLayoutManager = FlowLayoutManager()
-                    flowLayoutManager.isAutoMeasureEnabled = true
-                    layoutManager = flowLayoutManager
-                    adapter = ParagraphAdapter(paragraphElement.paragraph)
-                    setHasFixedSize(true)
-                }
+                holder.paragraphText.text= htmlfiy(paragraphElement.paragraph)
 
             }
             is AnchorLinkViewHolder -> {
@@ -170,6 +154,11 @@ class DefaultElementsAdapter(private val context: Context, private val onClick: 
             is IFrameViewHolder -> {
                 holder.iframeView.loadUrl((element as IFrameElement).url)
                 holder.iframeView.settings.javaScriptEnabled = true
+            }
+
+            is UnknownViewHolder->{
+                holder.unknownTextView.text= htmlfiy((element as UnknownElement).html)
+
             }
 
         }

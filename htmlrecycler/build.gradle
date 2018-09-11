@@ -37,7 +37,6 @@ dependencies {
     implementation  'org.jsoup:jsoup:1.11.3'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.xiaofeng.android:flowlayoutmanager:1.2.3.2'
 
 }
 repositories {

@@ -1,8 +1,6 @@
 package m7mdra.com.htmlrecycler.adapter
 
 import android.graphics.Color
-import android.graphics.Typeface.BOLD
-import android.provider.Telephony.TextBasedSmsColumns.BODY
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,9 +8,8 @@ import android.widget.Toast
 import m7mdra.com.htmlrecycler.R
 import m7mdra.com.htmlrecycler.elements.*
 import m7mdra.com.htmlrecycler.htmlfiy
-import m7mdra.com.htmlrecycler.viewholder.EmptyViewHolder
+import m7mdra.com.htmlrecycler.viewholder.UnknownViewHolder
 import m7mdra.com.htmlrecycler.viewholder.paragraph.*
-import java.awt.font.TextAttribute.UNDERLINE
 
 class ParagraphAdapter(private val list: List<Paragraph>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when (viewType) {
@@ -27,9 +24,9 @@ class ParagraphAdapter(private val list: List<Paragraph>) : RecyclerView.Adapter
         EMPHASIZES ->
             EmphasizesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_paragraph_item, parent, false))
         UNKNOWN ->
-            EmptyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_paragraph_item, parent, false))
+            UnknownViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_paragraph_item, parent, false))
         else ->
-            EmptyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_paragraph_item, parent, false))
+            UnknownViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_paragraph_item, parent, false))
 
     }
 
