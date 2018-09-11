@@ -11,7 +11,7 @@ Converts a simple html page into A `RecyclerView` of native android widgets powe
 ## Add it to your project
 ```groovy
 dependencies {
-    implementation 'com.github.m7mdra:HtmlRecycler:0.1.1'
+    implementation 'com.github.m7mdra:HtmlRecycler:0.1.11'
 }
 ```
 
