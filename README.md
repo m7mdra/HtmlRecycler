@@ -1,4 +1,5 @@
 
+
 # HtmlRecycler
 Converts a simple html page into A `RecyclerView` of native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/).
 
@@ -133,11 +134,11 @@ In `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRec
 	 - [x] `Section`
 	 - [ ] `Superscript` and `Subscrpit`
  - [ ] Test Element Extractors for different data sets.
- - [x] add more control over paragraph element.
+ - [x] ~~add more control over paragraph element.~~ paragraph element will be rendered using the `android.text.Html` class rather than handled by the library
  - [ ] other thing that i come up with...
  
 ## Dependencies:
- - [FlowLayoutManager](https://github.com/xiaofeng-han/AndroidLibs/tree/master/flowlayoutmanager)
+ - [~~FlowLayoutManager~~](https://github.com/xiaofeng-han/AndroidLibs/tree/master/flowlayoutmanager)
  - [Jsoup](https://jsoup.org/)
  - [Picasso](https://github.com/square/picasso)
 
