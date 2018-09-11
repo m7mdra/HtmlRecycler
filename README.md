@@ -131,6 +131,7 @@ In `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRec
 	 - [ ] `Table`
 	 - [x] `Div`
 	 - [x] `Section`
+	 - [ ] `Superscript` and `Subscrpit`
  - [ ] Test Element Extractors for different data sets.
  - [x] add more control over paragraph element.
  - [ ] other thing that i come up with...
@@ -141,3 +142,8 @@ In `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRec
  - [Picasso](https://github.com/square/picasso)
 
 PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if right) after every time your finish write code to **format it**.
+## projects uses this library:
+if you are using this library in your project let me by sending an email at xm7mdrax@gmail.com know and i will post it here.
+
+- be the first on the list.
+
