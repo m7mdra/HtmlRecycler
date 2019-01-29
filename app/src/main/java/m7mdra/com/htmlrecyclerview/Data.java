@@ -9,7 +9,6 @@ public class Data {
                     "<h1>Overview</h1>\n" +
                     "<p>The first Atos was introduced in 1997. It is fitted with a 999cc engine and has a top speed of 88 mph (142 km/h). It was succeeded by a facelift version by 2000 and in 2003 another one. It was discontinued in Europe in 2007, in favour of the Indian assembled i10 and in other markets in 2011." +
                     "<a href=http://www.google.com >Contact us</a> on our website" +
-                    "or call us +249921210081" +
                     "</p>\n" +
                     "<h1>Other names</h1>\n" +
                     "<p>The Atos Prime is marketed as the:</p>\n" +
