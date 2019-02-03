@@ -124,12 +124,15 @@ class FileSource(val file: File) : Source {
 
 ## Attach Click listeners on elements
 In `DefaultElemetsAdapter` class at line [#27](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L27) l i defined a [higher-order-function](https://kotlinlang.org/docs/reference/lambdas.html#higher-order-functions) in the constructor method (which dose the same as defining an interface) and on line [#75](https://github.com/m7mdra/HtmlRecylcer/blob/master/htmlrecycler/src/main/java/m7mdra/com/htmlrecycler/adapter/DefaultElementsAdapter.kt#L75) we envoke the method passing our element and the position of the clicked view.
+## What about Unimplemented elements ?
+
+the library will mark any unimplemented element as `UnknownElement` and will delegate it to the `android.text.Html#fromHtml` class to convert it `Spans` and will be displayed on `TextView`
 
 ## TODO list: 
  - [ ] Define a standard Layout styling.
  - [x] allow `NetworkSource` to run on `UI thread` without crashing. 
  - [ ] Support the following elements:
-	 - [ ] `Table`
+	 - [ ] `Table`  
 	 - [x] `Div`
 	 - [x] `Section`
 	 - [ ] `Superscript` and `Subscrpit`
@@ -147,4 +150,5 @@ PR are **welcome** just use crtl+alt+L or (command + alt+L for mac ... idk if ri
 if you are using this library in your project let me by sending an email at xm7mdrax@gmail.com know and i will post it here.
 
 - be the first on the list.
+
 
