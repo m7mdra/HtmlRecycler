@@ -1,9 +1,9 @@
+# ***This is under development*** 
 
 
 # HtmlRecycler
 Converts a simple html page into A `RecyclerView` of native android widgets powered by [Jsoup library](https://jsoup.org/) and inspired by [Medium Textview](https://github.com/angebagui/medium-textview/).
 
-# ***This is under development*** 
 
 > ### ***Note*** 
 >  This library was design and developed by ME and we use this in our application which depends on a Content Management system and was never intended to replace browsers or act as one. this library simply gave us more control over html page than `WebView`
