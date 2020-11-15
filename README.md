@@ -1,4 +1,4 @@
-### ***This library has been under development for over 1 year, I don't think I will ever complete since the project we were working on got cancelled and I don't think I have enough time to finish it, PR are always welcome.*** 
+### ***This library has been under development for over 2 year, I don't think I will ever complete since the project we were working on got cancelled and I don't think I have enough time to finish it, PR are always welcome.*** 
 
 
 # HtmlRecycler
